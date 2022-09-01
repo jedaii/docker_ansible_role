@@ -1,2 +1,10 @@
 ---
 # tasks file for docker_ansible_role
+- name: Install prerequisites
+  ansible.builtin.apt:
+    name:
+      - "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ docker_prerequisites }}"
+  become: true

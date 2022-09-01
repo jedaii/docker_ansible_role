@@ -1,2 +1,7 @@
 ---
 # defaults file for docker_ansible_role
+docker_prerequisites:
+  - ca-certificates 
+  - curl
+  - gnupg
+  - lsb-release
