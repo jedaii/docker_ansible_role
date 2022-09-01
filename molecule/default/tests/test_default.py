@@ -13,3 +13,12 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(os.environ['MOLEC
 def test_prerequisites_packages(host, pkgs):
     pkg = host.package(pkgs)
     assert pkg.is_installed
+
+@pytest.mark.parametrize("pkgs", [
+    "docker-ce",
+    "docker-ce-cli",
+    "containerd.io"
+])
+def test_main_docker_packages(host, pkgs):
+    pkg = host.package(pkgs)
+    assert pkg.is_installed

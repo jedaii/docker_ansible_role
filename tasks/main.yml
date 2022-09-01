@@ -6,5 +6,43 @@
       - "{{ item }}"
     state: present
     update_cache: yes
-  with_items: "{{ docker_prerequisites }}"
+  with_items: "{{ docker_prerequisites_packages }}"
+  become: true
+
+- name: Add directory for keyring file
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+  become: true
+
+- name: Add keyring file
+  ansible.builtin.file:
+    path: /etc/apt/keyrings/docker.gpg
+    owner: root
+    group: root
+    mode: '0644'
+    state: touch
+  become: true
+
+- name: Add Dockers official GPG key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    keyring: /etc/apt/keyrings/docker.gpg
+    state: present
+  become: true
+
+- name: Add Dockers repository
+  ansible.builtin.apt_repository:
+    repo: "{{ docker_apt_repository }}"
+    state: present
+    update_cache: true
+  become: true
+
+- name: Install Docker main packages
+  ansible.builtin.apt:
+    name:
+      - "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ docker_main_packages }}"
   become: true
