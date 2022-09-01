@@ -46,3 +46,10 @@
     update_cache: yes
   with_items: "{{ docker_main_packages }}"
   become: true
+
+- name: Ensure docker service is started and enabled
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true
+  become: true

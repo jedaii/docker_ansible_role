@@ -22,3 +22,8 @@ def test_prerequisites_packages(host, pkgs):
 def test_main_docker_packages(host, pkgs):
     pkg = host.package(pkgs)
     assert pkg.is_installed
+
+def test_docker_service(host):
+    s = host.service("docker")
+    assert s.is_enabled
+    assert s.is_running
