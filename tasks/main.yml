@@ -53,3 +53,10 @@
     state: started
     enabled: true
   become: true
+
+- name: Add users to docker group
+  ansible.builtin.user:
+    name: "{{ item }}"
+    group: docker
+  become: true
+  with_items: "{{ docker_users }}"
