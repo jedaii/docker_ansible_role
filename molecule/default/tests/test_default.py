@@ -27,3 +27,7 @@ def test_docker_service(host):
     s = host.service("docker")
     assert s.is_enabled
     assert s.is_running
+
+def test_users_in_docker_group(host):
+    docker_user = host.user("vagrant")
+    assert "docker" in docker_user.groups
