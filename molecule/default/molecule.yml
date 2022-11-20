@@ -13,3 +13,14 @@ verifier:
   name: testinfra
   options:
     verbose: true
+lint: |
+  set -e
+  yamllint .
+  ansible-lint -c .config/ansible-lint.yml
+scenario:
+  test_sequence:
+    - destroy
+    - lint
+    - create
+    - converge
+    - verify

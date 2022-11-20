@@ -13,15 +13,7 @@
   ansible.builtin.file:
     path: /etc/apt/keyrings
     state: directory
-  become: true
-
-- name: Add keyring file
-  ansible.builtin.file:
-    path: /etc/apt/keyrings/docker.gpg
-    owner: root
-    group: root
-    mode: '0644'
-    state: touch
+    mode: 0777
   become: true
 
 - name: Add Dockers official GPG key
