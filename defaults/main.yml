@@ -11,6 +11,7 @@ docker_main_packages:
   - docker-ce-cli
   - containerd.io
 
-docker_users: []
+docker_users:
+  - vagrant
 docker_apt_arch: amd64
 docker_apt_repository: "deb [arch={{ docker_apt_arch }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
