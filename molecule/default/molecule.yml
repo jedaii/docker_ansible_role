@@ -6,7 +6,7 @@ driver:
 platforms:
   - name: ubuntu2004
     image: ubuntu:20.04
-    # privileged: true
+    privileged: true
 provisioner:
   name: ansible
 verifier:
