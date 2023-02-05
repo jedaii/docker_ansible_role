@@ -16,7 +16,7 @@ before_script:
   - rsync --version
   - docker info
   - python3 --version
-  - python3 -m pip install --ingnore-installed ansible molecule[docker] ansible-lint pytest pytest-testinfra
+  - python3 -m pip install ansible molecule[docker] ansible-lint pytest pytest-testinfra
   - ansible --version
   - molecule --version
 
