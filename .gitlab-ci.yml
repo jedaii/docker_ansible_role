@@ -1,5 +1,5 @@
 ---
-image: docker:stable-dind
+image: docker:dind
 
 variables:
   DOCKER_HOST: tcp://docker:2375
